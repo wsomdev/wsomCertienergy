@@ -1,0 +1,45 @@
+<div class="commission mt-15">
+  <app-info-panel *ngIf="isPanelVisible" (closePanel)="isPanelVisible = !isPanelVisible" [isList]="true"
+    [textToShow]="textToShow"></app-info-panel>
+  <div class="toolbar mt-15">
+    <app-horizontal-selector [sections]="sections" [selected]="selectedSection"
+      (updateSelected)="changeCategory($event)"></app-horizontal-selector>
+    <app-print-panel [text]="printText"></app-print-panel>
+    <app-amount-panel [text]="amountText" [amount]="amount"></app-amount-panel>
+    <app-icon-selector [availableViews]="availableViews" [selected]="selectedView"
+      (updateSelected)="changeView($event)"></app-icon-selector>
+  </div>
+  <div class="view mt-15">
+    <app-commission-view [amount]="amount" [barText]="barText" [type]="isUnpaid ? 'unpaid' : 'commission'"
+      [orders]="orders" [view]="selectedView"></app-commission-view>
+  </div>
+  <div class="disclaimer background-clear-white mt-15">
+    <h2>Informations supplémentaires</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper mi ac arcu auctor tristique. Praesent
+      ullamcorper vel justo nec semper. Sed ac eros eu sapien bibendum tincidunt. Aliquam interdum non dui id efficitur.
+      Donec convallis nibh eu sollicitudin imperdiet. Nullam aliquam metus mauris, ac rutrum ligula pulvinar vel.
+      Aliquam neque justo, pretium vel molestie ut, vestibulum eget odio. Aenean nec nisi nisl. Aenean finibus malesuada
+      dolor, quis efficitur neque pretium sed.
+    </p>
+    <p>
+      Quisque ornare volutpat condimentum. Phasellus eu placerat orci, non gravida neque. In a dignissim ipsum, sit
+      amet
+      hendrerit mauris. Cras eget turpis arcu. Aliquam non sollicitudin lectus, vel egestas nisi. Nunc et ultricies
+      lorem. Cras commodo laoreet tortor, vitae lacinia ex elementum et. Sed finibus tincidunt iaculis.
+    </p>
+    <p>
+      Aenean in magna eu eros hendrerit iaculis. Morbi nec molestie orci. Nullam et quam fringilla, pellentesque neque
+      eget, dictum tortor. Ut in mauris ut sapien venenatis feugiat eget quis nisl. Nullam eu augue ac metus scelerisque
+      fermentum. Nam varius lobortis feugiat. Pellentesque euismod vulputate urna, a finibus elit hendrerit vitae.
+      Quisque sit amet auctor est. Nulla facilisi. Etiam vel blandit enim. Duis feugiat consequat commodo. In ut est ut
+      massa rhoncus maximus a ac lectus. Duis id diam convallis dui iaculis rhoncus. Morbi sed ex non nulla convallis
+      gravida. Aenean at nisi eget tortor ultrices tempor.
+    </p>
+    <p>
+      Phasellus in bibendum tortor, vitae consequat mauris. Nulla ac ante vel nisi fringilla egestas et ac erat.
+      Suspendisse porttitor sit amet velit id cursus. Vestibulum lacus orci, dignissim id auctor quis, maximus at
+      tortor. Vivamus iaculis, lorem ac lacinia ullamcorper, ante nunc sagittis lorem, sed fringilla nibh est et enim.
+    </p>
+  </div>
+</div>

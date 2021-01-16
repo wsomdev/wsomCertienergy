@@ -1,0 +1,19 @@
+.success-btn.selected-btn:disabled {
+  color: mat-color($wsom-certenergie-success, 600) !important;
+  border-bottom-style: solid !important;
+  border-bottom-width: 3px !important;
+  border-bottom-color: mat-color($wsom-certenergie-success, 600) !important;
+  
+}
+
+.danger-btn.selected-btn:disabled {
+  color: mat-color($wsom-certenergie-warn, 900) !important;
+  border-bottom-style: solid !important;
+  border-bottom-width: 3px !important;
+  border-bottom-color: mat-color($wsom-certenergie-warn, 900) !important;
+}
+
+.selected-icon:disabled {
+  color: mat-color($wsom-certenergie-primary) !important;
+  box-shadow: rgba($color: #000000, $alpha: .1) 0px 3px 4px 0px;
+}

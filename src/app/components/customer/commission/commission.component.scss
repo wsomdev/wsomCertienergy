@@ -1,0 +1,16 @@
+.commission {
+  width: 90vw;
+  max-width: 1300px;
+  margin: 0px auto;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .disclaimer {
+    padding: 40px;
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,12 @@
+<mat-card class="info-panel background-primary-light">
+  <mat-card-content>
+    <mat-icon class="second-drak xl">info</mat-icon>
+    <ul *ngIf="isList">
+      <li *ngFor="let item of textToShow" class="second-dark">
+        {{ item }}
+      </li>
+    </ul>
+    <p *ngIf="!isList">{{ textToShow }}</p>
+    <mat-icon class="second-dark clickable" (click)="close()">close</mat-icon>
+  </mat-card-content>
+</mat-card>

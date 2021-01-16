@@ -1,0 +1,5 @@
+<div class="horizontal-selector background-clear-white">
+  <button mat-button *ngFor="let item of sections" class="selected-btn" [ngClass]="selected.color+'-btn'"  [disabled]='isSelected(item)' (click)="selectioChanged(item)">
+    {{ item.display }}
+  </button>
+</div>

@@ -1,0 +1,39 @@
+.background-clear-white {
+  background-color: white !important;
+}
+
+.background-light-grey {
+  background-color: hsl(0, 0%, 95%) !important;
+}
+
+.second-drak {
+  color: mat-color($wsom-certenergie-second, 500) !important;
+}
+
+.background-primary-light {
+  background-color: mat-color($wsom-certenergie-primary, 50);
+}
+
+.background-primary {
+  background-color: mat-color($wsom-certenergie-primary);
+}
+
+.background-success {
+  background-color: mat-color($wsom-certenergie-success);
+}
+
+.background-warn {
+  background-color: mat-color($wsom-certenergie-warn, 900);
+}
+
+.warn {
+  color: mat-color($wsom-certenergie-warn, 900);
+}
+
+.success {
+  color: mat-color($wsom-certenergie-success) !important;
+}
+
+.white {
+  color: mat-color($wsom-certenergie-white) !important;
+}

@@ -1,0 +1,56 @@
+<div class="customer-card background-light-grey">
+  <div class="line name">
+    <mat-icon fontSet="fontawesome" class="medium light-opacity" fontIcon="fa-user-o"></mat-icon>
+    <p class="m-0 pl-15 pr-15">{{ (unpaidOrder?.Customer || commission?.Customer || '-') | titlecase }}</p>
+  </div>
+  <hr class="light-opacity">
+  <div class="line adress">
+    <mat-icon fontSet="fontawesome" class="medium light-opacity" fontIcon="fa-map-marker"></mat-icon>
+    <p class="m-0 pl-15 pr-15">{{ (unpaidOrder?.Address || commission?.Address || '-') | titlecase }}</p>
+  </div>
+  <hr class="light-opacity">
+  <div class="line info" *ngIf="isUnpaid">
+    <mat-icon class="medium light-opacity">info</mat-icon>
+    <div class="two-line">
+      <div class="info-left">
+        <p class="m-0 pl-15 pr-15">Information complémentaire</p>
+      </div>
+      <div class="validity pl-15" *ngIf="valid">
+        <mat-icon fontSet="fontawesome" class="success" fontIcon="fa-check-circle"></mat-icon>
+        <p class="success m-0">Validé</p>
+      </div>
+      <div class="validity pl-15" *ngIf="!valid">
+        <mat-icon fontSet="fontawesome" class="warn" fontIcon="fa-times-circle"></mat-icon>
+        <p class="warn m-0">Commission non validée</p>
+      </div>
+    </div>
+  </div>
+  <div class="line info" *ngIf="!isUnpaid">
+    <mat-icon class="medium light-opacity">money</mat-icon>
+    <div class="two-line" *ngIf="available">
+      <p class="m-0 pl-15 pr-15">Montant disponible</p>
+      <p class="success m-0 pl-15 bold">{{ commission?.Amount | currency:'EUR':'symbol':'1.2-2':'fr' || '-' }}</p>
+    </div>
+    <div class="two-line" *ngIf="!available">
+      <p class="m-0 pl-15 pr-15">Montant Indisponible</p>
+      <p class="warn m-0 pl-15 bold">{{ commission?.Amount | currency:'EUR':'symbol':'1.2-2':'fr' || '-' }}</p>
+    </div>
+  </div>
+  <hr class="light-opacity">
+  <div class="line dl">
+    <div class="square background-warn clickable" matTooltip="Télécharger le document PDF"
+      [ngClass]="{'background-warn': isUnpaid || !available, 'background-success': available }" (click)="seePdf()">
+      <mat-icon class="medium white">description</mat-icon>
+    </div>
+    <div class="two-line" *ngIf="isUnpaid">
+      <p class="m-0 pl-15 pr-15">Facture <span class="light-opacity">2017/8618</span></p>
+      <p class="warn m-0 pl-15 bold">{{ unpaidOrder?.UnpaidAmount | currency:'EUR':'symbol':'1.2-2':'fr' || '-' }}</p>
+    </div>
+    <div class="two-line" *ngIf="available">
+      <p class="m-0 pl-15 pr-15">Facture <span class="light-opacity">2017/8618</span></p>
+    </div>
+    <div class="two-line" *ngIf="!available && !isUnpaid">
+      <p class="m-0 pl-15 pr-15">Avis de paiement <span class="light-opacity">2017/8618</span></p>
+    </div>
+  </div>
+</div>

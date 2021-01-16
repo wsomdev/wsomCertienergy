@@ -1,0 +1,65 @@
+.customer-card {
+  margin: 25px;
+  width: 300px;
+  height: 350px;
+  border-radius: 12px;
+  border: solid 1px rgba($color: #000000, $alpha: .2);
+
+  hr {
+    width: 70%;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  .line {
+
+    height: 70px;
+    padding: 0px 20px;
+
+    .two-line {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      p.bold {
+        font-size: large;
+        font-weight: 900;
+      }
+
+    }
+
+    &.name {
+      p {
+        font-weight: 900;
+      }
+    }
+
+    &.info {
+
+      .validity {
+        display: flex;
+        align-items: baseline;
+
+        p {
+          font-size: small;
+        }
+      }
+
+    }
+
+    &.dl {
+      .square {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,144 @@
+.m {
+  &- {
+    &0 {
+      margin: 0px !important;
+    }
+  }
+
+  &-auto {
+    margin: auto;
+  }
+
+  &-none {
+    margin: 0px !important;
+  }
+
+  &b- {
+    &0 {
+      margin-bottom: 0% !important;
+    }
+
+    &10 {
+      margin-bottom: 10px !important;
+    }
+  }
+
+  &r- {
+    &5 {
+      margin-right: 5px !important;
+    }
+
+    &10 {
+      margin-right: 10px !important;
+    }
+
+    &15 {
+      margin-right: 15px !important;
+    }
+  }
+
+  &l- {
+    &5 {
+      margin-left: 5px !important;
+    }
+
+    &10 {
+      margin-left: 10px !important;
+    }
+
+    &15 {
+      margin-left: 15px !important;
+    }
+
+    &125 {
+      margin-left: 125px !important;
+    }
+  }
+
+  &t- {
+    &5 {
+      margin-top: 5px !important;
+    }
+
+    &10 {
+      margin-top: 10px !important;
+    }
+
+    &15 {
+      margin-top: 15px !important;
+    }
+  }
+}
+
+.p {
+  &- {
+    &0 {
+      padding: 0px !important;
+    }
+  }
+
+  &l- {
+    &15 {
+      padding-left: 15px !important;
+    }
+
+    &25 {
+      padding-left: 25px !important;
+    }
+  }
+
+  &r- {
+    &15 {
+      padding-right: 15px !important;
+    }
+
+    &25 {
+      padding-right: 25px !important;
+    }
+  }
+
+  &b- {
+    &15 {
+      padding-bottom: 15px !important;
+    }
+  }
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.light-opacity {
+  opacity: .5;
+
+  &-6 {
+    opacity: .6;
+  }
+
+  &-8 {
+    opacity: .8;
+  }
+
+  &-9 {
+    opacity: .9;
+  }
+}
+
+.spinner-container {
+  margin: 20px auto;
+  width: 150px;
+
+  .success.mat-progress-spinner circle,
+  .success.mat-spinner circle {
+    stroke: mat-color($wsom-certenergie-success) !important;
+  }
+
+  .danger.mat-progress-spinner circle,
+  .danger.mat-spinner circle {
+    stroke: mat-color($wsom-certenergie-danger) !important;
+  }
+
+  mat-spinner {
+    margin: auto;
+  }
+}

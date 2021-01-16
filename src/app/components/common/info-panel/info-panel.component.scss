@@ -1,0 +1,9 @@
+.info-panel {
+  max-width: 60vw;
+  margin: auto;
+
+  mat-card-content {
+    display: flex;
+    justify-content: space-between;
+  }
+}
