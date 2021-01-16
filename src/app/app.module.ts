@@ -10,7 +10,6 @@ import { CommonComposantModule } from './components/common/commonComposant.modul
 // import for currency and date pipe
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { CustomerRoutingModule } from './components/customer/customer-routing.module';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -22,7 +21,6 @@ registerLocaleData(localeFr);
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CustomerModule,
     CommonComposantModule
   ],
   providers: [
