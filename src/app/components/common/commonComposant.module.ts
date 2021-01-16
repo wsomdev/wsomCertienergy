@@ -7,9 +7,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PrintPanelComponent } from './print-panel/print-panel.component';
 import { AmountPanelComponent } from './amount-panel/amount-panel.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconSelectorComponent } from './icon-selector/icon-selector.component';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,21 +19,25 @@ import { IconSelectorComponent } from './icon-selector/icon-selector.component';
     InfoPanelComponent,
     PrintPanelComponent,
     AmountPanelComponent,
-    IconSelectorComponent
+    IconSelectorComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatToolbarModule,
+    RouterModule
   ],
   exports: [
     HorizontalSelectorComponent,
     InfoPanelComponent,
     PrintPanelComponent,
     AmountPanelComponent,
-    IconSelectorComponent
+    IconSelectorComponent,
+    ToolbarComponent
   ]
 })
 export class CommonComposantModule { }

@@ -1,0 +1,10 @@
+<mat-toolbar color="warn" class="light-opacity-8">
+  {{ appName }}
+  <span class="spacer"></span>
+  <button mat-icon-button matTooltip="Page d'acceuil" [routerLink]="'/'">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="Page des commissions" [routerLink]="'/customer'">
+    <mat-icon>money</mat-icon>
+  </button>
+</mat-toolbar>

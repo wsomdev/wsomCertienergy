@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CustomerModule } from './components/customer/customer.module';
 import { CommonComposantModule } from './components/common/commonComposant.module';
 // import for currency and date pipe
 import { registerLocaleData } from '@angular/common';
