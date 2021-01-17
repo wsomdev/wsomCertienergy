@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PdfHelper } from 'src/app/helpers/pdf.helper';
+import { TEXT_SNACKBAR_PDF } from 'src/app/helpers/static/text';
 import { Commission, TypeChecking, UnpaidOrder } from 'src/app/models/commission/commission.model';
 import { Section } from 'src/app/models/commission/section.enum';
 
@@ -13,7 +15,7 @@ export class CustomerCardComponent extends TypeChecking implements OnInit {
   @Input() commission: Commission;
   @Input() unpaidOrder: UnpaidOrder;
   @Input() type: Section;
-  constructor() {
+  constructor(private snackBar: MatSnackBar) {
     super();
   }
 
@@ -30,7 +32,7 @@ export class CustomerCardComponent extends TypeChecking implements OnInit {
   }
 
   public seePdf(): void {
-    return PdfHelper.openPdfNewTab(this.isUnpaid ? this.unpaidOrder.InvoiceLink : this.commission.InvoiceLink);
+    return PdfHelper.openPdfNewTab(this.isUnpaid ? this.unpaidOrder.InvoiceLink : this.commission.InvoiceLink, this.snackBar);
   }
 
 }

@@ -2,14 +2,23 @@
   <div class="bar" [ngClass]="class">
     <div class="text">
       <p class="text-white m-0">{{ barText }}</p>
-      <p class="text-white m-0"><span style="font-size: x-small;">TVAC</span> {{ amount ? (amount | currency:'EUR':'symbol':'1.2-2':'fr') : '-,-- €' }}</p>
+      <p class="text-white m-0"><span style="font-size: x-small;">TVAC</span>
+        {{ amount ? (amount | currency:'EUR':'symbol':'1.2-2':'fr') : '-,-- €' }}</p>
     </div>
   </div>
-  <div class="card-container" *ngIf="isUnpaid">
-    <app-customer-card *ngFor="let item of orders" [unpaidOrder]="item" [type]="type"></app-customer-card>
-  </div>
-  <div class="card-container" *ngIf="!isUnpaid">
-    <app-customer-card *ngFor="let item of orders" [commission]="item" [type]="type"></app-customer-card>
+  <div class="content" *ngIf="!(comService.$loading | async)">
+    <div class="card-container" *ngIf="isUnpaid && isCardView">
+      <app-customer-card *ngFor="let item of orders" [unpaidOrder]="item" [type]="type"></app-customer-card>
+    </div>
+    <div class="card-container" *ngIf="!isUnpaid && isCardView">
+      <app-customer-card *ngFor="let item of orders" [commission]="item" [type]="type"></app-customer-card>
+    </div>
+    <div class="table-container" *ngIf="isUnpaid && isListView">
+      <app-commission-table [unpaidOrders]="orders" [type]="type"></app-commission-table>
+    </div>
+    <div class="table-container" *ngIf="!isUnpaid && isListView">
+      <app-commission-table [commissions]="orders" [type]="type"></app-commission-table>
+    </div>
   </div>
   <div class="spinner-container" *ngIf="comService.$loading | async">
     <mat-spinner [ngClass]="{'success': !isUnpaid, 'danger': isUnpaid}"></mat-spinner>

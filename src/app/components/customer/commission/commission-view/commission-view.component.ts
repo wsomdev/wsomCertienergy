@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Commission, TypeChecking, UnpaidOrder } from 'src/app/models/commission/commission.model';
 import { Section } from 'src/app/models/commission/section.enum';
 import { IReference } from 'src/app/models/common/reference.interface';
+import { View } from 'src/app/models/common/view.enum';
 import { CommissionService } from 'src/app/services/commission/commission.service';
 
 
@@ -15,7 +16,7 @@ export class CommissionViewComponent extends TypeChecking implements OnInit {
   @Input() barText: string;
   @Input() orders: Commission[] | UnpaidOrder[];
   @Input() type: Section;
-  @Input() view: IReference;
+  @Input() view: View;
   constructor(public comService: CommissionService) {
     super();
   }

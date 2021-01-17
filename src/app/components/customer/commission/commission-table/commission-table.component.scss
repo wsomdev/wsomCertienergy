@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+
+  .mat-column-see {
+    .square {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .mat-column-validity {
+    .validity {
+      display: flex;
+      align-items: baseline;
+
+      p {
+        font-size: small;
+      }
+    }
+  }
+}
