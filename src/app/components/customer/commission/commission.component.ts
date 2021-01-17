@@ -45,7 +45,6 @@ export class CommissionComponent implements OnInit, OnDestroy {
       this.totalUnpaid = res.TotalUnpaid;
       this.commissions = res.Commissions;
       this.unpaidOrder = res.UnpaidOrders;
-      this.comService.loadingSubject.next(false);
     });
   }
 
