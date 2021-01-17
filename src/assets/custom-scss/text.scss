@@ -9,3 +9,8 @@ p.text-white {
 p.warn {
   color: mat-color($wsom-certenergie-warn, 900) !important;
 }
+td.bold,
+p.bold {
+  font-size: large;
+  font-weight: 900;
+}

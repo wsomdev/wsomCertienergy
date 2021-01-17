@@ -1,0 +1,79 @@
+<div class="table">
+  <table mat-table matSort [matSortDirection]="defaultSort.direction" [matSortActive]="defaultSort.name"
+    [dataSource]="dataSource">
+    <!-- Customer Column -->
+    <ng-container matColumnDef="customer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Client </th>
+      <td mat-cell *matCellDef="let element"> {{element.Customer | titlecase}} </td>
+    </ng-container>
+
+    <!-- address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Addresse </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address | titlecase}} </td>
+    </ng-container>
+
+    <!-- invoice Column -->
+    <ng-container matColumnDef="invoice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Facture </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.InvoiceNumber">
+          <p class="m-0">{{ isUnpaid ? 'Facture' : (isAvailable(element) ? 'Facture' : 'Avis de paiement')}}</p>
+          <p class="m-0 light-opacity">{{element.InvoiceNumber}}</p>
+        </div>
+        <p *ngIf="!element.InvoiceNumber" class="m-0 light-opacity">Pas de N° de facture disponible</p>
+      </td>
+    </ng-container>
+
+    <!-- availableAmount Column -->
+    <ng-container matColumnDef="availableAmount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Montant disponible </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;" class="success bold">
+        {{element.IsAvailable ? (element.Amount | currency:'EUR':'symbol':'1.2-2':'fr') : ''}} </td>
+    </ng-container>
+
+    <!-- unaivailable Column -->
+    <ng-container matColumnDef="unavailableAmount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Montant Indisponible </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;" class="warn bold">
+        {{element.IsAvailable ? '' :  (element.Amount | currency:'EUR':'symbol':'1.2-2':'fr') }} </td>
+    </ng-container>
+
+    <!-- validity Column -->
+    <ng-container matColumnDef="validity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Info Complémentaire </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="validity pl-15" *ngIf="element.CommissionAllowed">
+          <mat-icon fontSet="fontawesome" class="success" fontIcon="fa-check-circle"></mat-icon>
+          <p class="success m-0">Validé</p>
+        </div>
+        <div class="validity pl-15" *ngIf="!element.CommissionAllowed">
+          <mat-icon fontSet="fontawesome" class="warn" fontIcon="fa-times-circle"></mat-icon>
+          <p class="warn m-0">Commission non validée</p>
+        </div>
+    </ng-container>
+
+    <!-- unpaidAmount Column -->
+    <ng-container matColumnDef="unpaidAmount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Montant non payé </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;" class="warn bold">
+        {{element.UnpaidAmount | currency:'EUR':'symbol':'1.2-2':'fr'}} </td>
+    </ng-container>
+
+    <!-- see Column -->
+    <ng-container matColumnDef="see">
+      <th mat-header-cell *matHeaderCellDef> Voir </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="square background-warn clickable" matTooltip="Télécharger le document PDF"
+          [ngClass]="{'background-warn': isUnpaid || !isAvailable(element), 'background-success': isAvailable(element)}"
+          (click)="seePdf(element)">
+          <mat-icon class="small white">description</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+</div>

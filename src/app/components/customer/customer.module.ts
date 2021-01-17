@@ -11,6 +11,11 @@ import { CommissionViewComponent } from './commission/commission-view/commission
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CustomerRoutingModule } from './customer-routing.module';
+import { CommissionTableComponent } from './commission/commission-table/commission-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -18,7 +23,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
   declarations: [
     CommissionComponent,
     CustomerCardComponent,
-    CommissionViewComponent
+    CommissionViewComponent,
+    CommissionTableComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +34,11 @@ import { CustomerRoutingModule } from './customer-routing.module';
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     CommissionService
@@ -36,7 +46,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
   exports: [
     CommissionComponent,
     CustomerCardComponent,
-    CommissionViewComponent
+    CommissionViewComponent,
+    CommissionTableComponent
   ]
 })
 export class CustomerModule { }
