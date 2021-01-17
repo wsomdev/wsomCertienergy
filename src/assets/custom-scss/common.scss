@@ -142,3 +142,18 @@
     margin: auto;
   }
 }
+
+
+a.format-link {
+  color: mat-color($wsom-certenergie-danger) !important;
+  text-decoration: none;
+}
+
+a:hover.format-link {
+  text-decoration: underline;
+}
+
+a.no-style {
+  text-decoration: none;
+  color: black;
+}

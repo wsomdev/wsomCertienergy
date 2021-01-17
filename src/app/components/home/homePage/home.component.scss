@@ -1,0 +1,23 @@
+.home {
+  .top-arrow-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+
+    .top-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 5px
+    }
+
+  }
+
+  .exercice-description {
+    margin: auto;
+    width: 90vw;
+    padding: 40px;
+    border-radius: 8px;
+  }
+}

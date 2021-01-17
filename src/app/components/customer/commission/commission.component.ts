@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SECTIONS } from 'src/app/helpers/static/sections';
 import { TEXT_AMOUNT, TEXT_COMMISSIONS_BAR, TEXT_INFO_PANEL, TEXT_PRINT, TEXT_UNPAID_BAR } from 'src/app/helpers/static/text';
 import { VIEWS } from 'src/app/helpers/static/views';
@@ -13,7 +14,7 @@ import { CommissionService } from 'src/app/services/commission/commission.servic
   templateUrl: './commission.component.html',
   styleUrls: ['./commission.component.scss']
 })
-export class CommissionComponent implements OnInit {
+export class CommissionComponent implements OnInit, OnDestroy {
   public textToShow = TEXT_INFO_PANEL;
   public printText = TEXT_PRINT;
   public amountText = TEXT_AMOUNT;
@@ -27,14 +28,19 @@ export class CommissionComponent implements OnInit {
   public unpaidOrder: UnpaidOrder[];
   public selectedSection = this.sections?.[0];
   public selectedView = this.availableViews?.[0];
+  public getComSub: Subscription;
   constructor(public comService: CommissionService) { }
 
   ngOnInit(): void {
     this.init();
   }
 
+  ngOnDestroy(): void {
+    this.getComSub?.unsubscribe();
+  }
+
   public init(): void {
-    this.comService.getCommission().subscribe(res => {
+    this.getComSub = this.comService.getCommission().subscribe(res => {
       this.totalCommissions = res.TotalCommissions;
       this.totalUnpaid = res.TotalUnpaid;
       this.commissions = res.Commissions;
