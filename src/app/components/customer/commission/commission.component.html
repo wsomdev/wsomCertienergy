@@ -5,7 +5,7 @@
     <app-horizontal-selector [sections]="sections" [selected]="selectedSection"
       (updateSelected)="changeCategory($event)"></app-horizontal-selector>
     <app-print-panel [text]="printText"></app-print-panel>
-    <app-amount-panel [text]="amountText" [amount]="amount"></app-amount-panel>
+    <app-amount-panel [text]="amountText" [amount]="totalCommissions"></app-amount-panel>
     <app-icon-selector [availableViews]="availableViews" [selected]="selectedView"
       (updateSelected)="changeView($event)"></app-icon-selector>
   </div>

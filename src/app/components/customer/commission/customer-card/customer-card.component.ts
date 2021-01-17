@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PdfHelper } from 'src/app/helpers/pdf.helper';
-import { TEXT_SNACKBAR_PDF } from 'src/app/helpers/static/text';
 import { Commission, TypeChecking, UnpaidOrder } from 'src/app/models/commission/commission.model';
 import { Section } from 'src/app/models/commission/section.enum';
 

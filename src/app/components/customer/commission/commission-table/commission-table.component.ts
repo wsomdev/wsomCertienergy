@@ -6,7 +6,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { UnpaidListDataSource } from './unpaid-order.datasource';
 import { CommissionsListDataSource } from './commission.datasource';
 import { IOrder } from 'src/app/models/commission/commission.interface';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

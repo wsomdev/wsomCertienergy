@@ -6,7 +6,7 @@
         {{ amount ? (amount | currency:'EUR':'symbol':'1.2-2':'fr') : '-,-- €' }}</p>
     </div>
   </div>
-  <div class="content" *ngIf="!(comService.$loading | async)">
+  <div class="content" *ngIf="!(comService.$loading.get | async)">
     <div class="card-container" *ngIf="isUnpaid && isCardView">
       <app-customer-card *ngFor="let item of orders" [unpaidOrder]="item" [type]="type"></app-customer-card>
     </div>
@@ -20,7 +20,7 @@
       <app-commission-table [commissions]="orders" [type]="type"></app-commission-table>
     </div>
   </div>
-  <div class="spinner-container" *ngIf="comService.$loading | async">
+  <div class="spinner-container" *ngIf="comService.$loading.get | async">
     <mat-spinner [ngClass]="{'success': !isUnpaid, 'danger': isUnpaid}"></mat-spinner>
     <p class="text-center">Chargement en cours...</p>
   </div>
