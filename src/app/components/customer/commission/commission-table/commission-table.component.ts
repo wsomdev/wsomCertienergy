@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PdfHelper } from 'src/app/helpers/pdf.helper';
 import { Commission, TypeChecking, UnpaidOrder } from 'src/app/models/commission/commission.model';
 import { Section } from 'src/app/models/commission/section.enum';
@@ -9,13 +9,16 @@ import { IOrder } from 'src/app/models/commission/commission.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-commission-table',
   templateUrl: './commission-table.component.html',
   styleUrls: ['./commission-table.component.scss']
 })
-export class CommissionTableComponent extends TypeChecking implements OnInit, AfterViewInit {
+export class CommissionTableComponent extends TypeChecking implements OnInit, AfterViewInit, OnDestroy {
   @Input() commissions: Commission[];
   @Input() unpaidOrders: UnpaidOrder[];
   @Input() type: Section;
@@ -24,16 +27,22 @@ export class CommissionTableComponent extends TypeChecking implements OnInit, Af
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     this.dataSource.sort = sort;
   }
-  public commonColumn = ['customer', 'address', 'invoice'];
+  public commonColumnDesktop = ['customer', 'address', 'invoice'];
+  public commonColumnMobile = ['customer'];
   public displayedColumns: string[];
   public dataSource: MatTableDataSource<Commission | UnpaidOrder>;
-
-  constructor(private snackBar: MatSnackBar) {
+  public handleHandset: Subscription;
+  constructor(private snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver) {
     super();
   }
 
   ngOnInit(): void {
     this.initDataSource();
+    this.handleHandset = this.breakpointObserver.observe(Breakpoints.Handset)
+      .pipe(
+        map((result: BreakpointState) => result.matches),
+        shareReplay()
+      ).subscribe((v) => this.initColumns(v));
   }
 
   ngAfterViewInit(): void {
@@ -41,10 +50,18 @@ export class CommissionTableComponent extends TypeChecking implements OnInit, Af
     this.dataSource.paginator = this.paginator;
   }
 
+  ngOnDestroy(): void {
+    this.handleHandset.unsubscribe();
+  }
+
   public initDataSource(): void {
-    this.displayedColumns = this.isCommission ?
-      [...this.commonColumn, 'availableAmount', 'unavailableAmount', 'see'] : [...this.commonColumn, 'validity', 'unpaidAmount', 'see'];
     this.dataSource = this.isCommission ? new CommissionsListDataSource(this.commissions) : new UnpaidListDataSource(this.unpaidOrders);
+  }
+
+  public initColumns(isHandSet: boolean): void {
+    const col = isHandSet ? this.commonColumnMobile : this.commonColumnDesktop;
+    this.displayedColumns = this.isCommission ?
+      [...col, 'availableAmount', 'unavailableAmount', 'see'] : [...col, 'validity', 'unpaidAmount', 'see'];
   }
 
   public seePdf(order: IOrder): void {
