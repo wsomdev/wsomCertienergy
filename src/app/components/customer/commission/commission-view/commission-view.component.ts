@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
 import { Commission, TypeChecking, UnpaidOrder } from 'src/app/models/commission/commission.model';
 import { Section } from 'src/app/models/commission/section.enum';
 import { IReference } from 'src/app/models/common/reference.interface';
-import { View } from 'src/app/models/common/view.enum';
 import { CommissionService } from 'src/app/services/commission/commission.service';
 
 
@@ -18,9 +16,8 @@ export class CommissionViewComponent extends TypeChecking implements OnInit {
   @Input() orders: Commission[] | UnpaidOrder[];
   @Input() type: Section;
   @Input() view: IReference;
-  constructor(public matIconRegistry: MatIconRegistry, public comService: CommissionService) {
+  constructor(public comService: CommissionService) {
     super();
-    { matIconRegistry.registerFontClassAlias('fontawesome', 'fa'); }
   }
 
   ngOnInit(): void {}

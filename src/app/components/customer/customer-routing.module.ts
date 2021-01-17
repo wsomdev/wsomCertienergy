@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: CommissionComponent
+  },
+  {
+    path: 'home',
+    pathMatch: 'full',
+    loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
   }
 ];
 
