@@ -43,14 +43,14 @@
       <mat-icon class="medium white">description</mat-icon>
     </div>
     <div class="two-line" *ngIf="isUnpaid">
-      <p class="m-0 pl-15 pr-15">Facture <span class="light-opacity">{{ unpaidOrder?.InvoiceNumber }}</span></p>
+      <p class="m-0 pl-15 pr-15 fs-s">Facture <span class="light-opacity">{{ unpaidOrder?.InvoiceNumber }}</span></p>
       <p class="warn m-0 pl-15 bold">{{ unpaidOrder?.UnpaidAmount | currency:'EUR':'symbol':'1.2-2':'fr' || '-' }}</p>
     </div>
     <div class="two-line" *ngIf="available">
-      <p class="m-0 pl-15 pr-15">Facture <span class="light-opacity">{{ commission?.InvoiceNumber }}</span></p>
+      <p class="m-0 pl-15 pr-15 fs-s">Facture <span class="light-opacity">{{ commission?.InvoiceNumber }}</span></p>
     </div>
     <div class="two-line" *ngIf="!available && !isUnpaid">
-      <p class="m-0 pl-15 pr-15">Avis de paiement <span class="light-opacity">{{ commission?.InvoiceNumber }}</span></p>
+      <p class="m-0 pl-15 pr-15 fs-s">Avis de paiement <span class="light-opacity">{{ commission?.InvoiceNumber }}</span></p>
     </div>
   </div>
 </div>
